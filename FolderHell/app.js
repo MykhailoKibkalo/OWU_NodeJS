@@ -1,3 +1,6 @@
+//
+// ПОКИ СЮДИ НЕ ДИВИСЬ, БУДЬ ЛАСКА 😊😊😊
+//
 const fs = require('fs');
 const path = require('path');
 
