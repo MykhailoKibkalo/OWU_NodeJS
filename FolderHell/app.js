@@ -35,3 +35,32 @@ function cleaner(badPath, goodPath) {
 };
 
 cleaner(badPath,goodPath);
+
+//---------------------------------------------------------------------
+
+const { promisify } = require('util')
+const fs = require('fs')
+const readFile = promisify(fs.readFile);
+
+// npm i fs-extra
+const fsExtra = require('fs-extra')
+
+const path = require('path');
+
+// npm i chalk -D
+const chalk = require('chalk')
+
+const func = async() => {
+    try {
+        //1 - util
+        // const data = await readFile(path.join(process.cwd(), 'test.txt')))
+
+        // 2 - fs-extra
+        const data = await fsExtra.readFile(path.join(process.cwd(), 'test.txt'))
+        console.log(chalk.blue.bold.underline(data.toString()))
+    } catch (e) {
+        console.log(e.message)
+    }
+}
+
+func()
