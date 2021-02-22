@@ -9,12 +9,15 @@
 </head>
 <body>
 
-<div>
-    NickName: {{oneUser.nickname}}
-</div>
+{{#each users}}
+    <div>
+        NickName:  {{this.nickname}}
+    </div>
+    <div>
+        Email:    {{this.email}}
+    </div>
+    <hr>
+{{/each}}
 
-<div>
-    Email:  {{oneUser.email}}
-</div>
 </body>
 </html>
