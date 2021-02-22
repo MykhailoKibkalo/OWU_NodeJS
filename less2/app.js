@@ -33,7 +33,7 @@ app.get('/user/:userId', (req, res) => {
     const { userId } = req.params;
     fs.readFile(filePath, (err, data) => {
         const users = JSON.parse(data.toString());
-        res.render('user',{user: users[userId]})
+        res.render('user',{oneUser:users[userId]})
     })
 })
 
