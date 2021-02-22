@@ -1,5 +1,5 @@
 //*****************************************************************************************************
-//* Трохи на гавнокодив, не відловлюю помилки, не працюють :userId. Голова не варить. Зранку виправлю *
+//* ======================================== Все повиправляв ======================================== *
 //*****************************************************************************************************
 const express = require('express');
 const expressHbs = require('express-handlebars');
@@ -29,6 +29,9 @@ app.set('views', path.join(__dirname, 'views'));
 //========================== Single user and Users
 app.get('/user', (req, res) => {
     fs.readFile(filePath, (err, data) => {
+        if(err) {
+            res.redirect('errorData');
+        }
       let user = JSON.parse(data.toString());
     res.render('user',{user});
    })
@@ -36,6 +39,9 @@ app.get('/user', (req, res) => {
 
 app.get('/allUsers', (req, res) => {
     fs.readFile(filePath, (err, data) => {
+        if (err) {
+            res.redirect('errorData');
+        }
       let users = JSON.parse(data.toString());
     res.render('allUsers',{users});
    })
@@ -44,6 +50,9 @@ app.get('/allUsers', (req, res) => {
 app.get('/user/:userId', (req, res) => {
     const { userId } = req.params;
     fs.readFile(filePath, (err, data) => {
+        if (err) {
+            res.redirect('errorData');
+        }
         const users = JSON.parse(data.toString());
         res.render('user',{oneUser:users[userId]})
     })
@@ -59,6 +68,10 @@ app.get('/error', (req, res) => {
     res.render('error');
 });
 
+app.get('/errorData', (req, res) => {
+    res.render('errorData');
+});
+
 app.get('/errorLog', (req, res) => {
     res.render('errorLog');
 });
@@ -69,6 +82,9 @@ app.get('/login', (req, res) => {
 
 app.post('/login', (req, res) => {
     fs.readFile(filePath, (err, data) => {
+        if (err) {
+            res.redirect('errorData');
+        }
         let users = JSON.parse(data.toString());
         if (users.some(user => user.email === req.body.email) && users.some(user => user.password === req.body.password) ) {
             let userIdx = users.findIndex(user => user.email === req.body.email);
@@ -86,6 +102,9 @@ app.get('/register', (req, res) => {
 
 app.post('/register', (req, res) => {
     fs.readFile(filePath, (err, data) => {
+        if (err) {
+            res.redirect('errorData');
+        }
         let users = JSON.parse(data.toString());
         if (users.some(user => user.email === req.body.email)) {
             res.redirect('error');
@@ -94,7 +113,7 @@ app.post('/register', (req, res) => {
         users.push(req.body);
         fs.writeFile(filePath, JSON.stringify(users), err1 => {
             if (err1) {
-                console.log(err1);
+                res.redirect('errorData');
             }
             res.redirect('allUsers');
         })
