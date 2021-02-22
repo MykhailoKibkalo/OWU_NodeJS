@@ -7,9 +7,6 @@ const path = require('path');
 const fs = require('fs');
 const app = express();
 const filePath = path.join(__dirname, 'data', 'user.json');
-let error = '';
-let link = '';
-let linkText = '';
 app.listen(4100, () => {
     console.log('Діло буде');
     console.log('Port: 4100');
