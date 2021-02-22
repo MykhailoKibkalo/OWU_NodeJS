@@ -32,6 +32,7 @@ app.set('views', path.join(__dirname, 'views'));
 //========================== Single user and Users
 app.get('/user', (req, res) => {
     fs.readFile(filePath, (err, data) => {
+
         if(err) {
             res.render('error',
                 {
@@ -48,6 +49,7 @@ app.get('/user', (req, res) => {
 
 app.get('/allUsers', (req, res) => {
     fs.readFile(filePath, (err, data) => {
+
         if (err) {
             res.render('error',
                 {
@@ -56,6 +58,7 @@ app.get('/allUsers', (req, res) => {
                     linkText: 'Try again'
                 });
         }
+
       let users = JSON.parse(data.toString());
     res.render('allUsers',{users});
    });
@@ -106,6 +109,7 @@ app.post('/login', (req, res) => {
                 });
 
         }
+
         let users = JSON.parse(data.toString());
 
         if (users.some(user => user.email === req.body.email) && users.some(user => user.password === req.body.password) ) {
