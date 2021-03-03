@@ -1,5 +1,4 @@
 const errorCodes = require('../constant/errorCodes.enum');
-// const errorMessage = require('../constant/errorMassege.enum');
 const { userValidators } = require('../validators');
 
 module.exports = {

@@ -1,5 +1,5 @@
 const errorCodes = require('../constant/errorCodes.enum');
-const errorMessage = require('../constant/errorMassege.enum');
+const errorMessage = require('../constant/errorMesssge.enum');
 const { carValidators } = require('../validators');
 
 module.exports = {
