@@ -13,10 +13,11 @@ module.exports = {
 
             const tokens = tokenizer();
 
+            await authService.checkToken(tokens, user);
             // res.json('Login successful');
             res.json(tokens);
         } catch (e) {
             res.status(418).json(e.message);
         }
-    }
+    },
 };
