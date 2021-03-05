@@ -20,4 +20,19 @@ module.exports = {
             res.status(418).json(e.message);
         }
     },
+
+    createRefreshedToken: async (req, res) => {
+        const { tokens } = req;
+        try {
+            await authService.delToken(tokens);
+
+            const newTokens = tokenizer();
+
+            await authService.delToken(newTokens, tokens);
+
+            res.json(newTokens);
+        } catch (e) {
+            res.status(418).json(e.message);
+        }
+    }
 };
