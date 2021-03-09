@@ -12,7 +12,6 @@ module.exports = {
             await passwordHasher.compare(password, user.password);
 
             const tokens = tokenizer();
-
             await authService.checkToken(tokens, user);
             // res.json('Login successful');
             res.json(tokens);
