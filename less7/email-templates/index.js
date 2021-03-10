@@ -6,13 +6,8 @@ module.exports = {
         subject: 'Hi there. Welcome to the club, buddy'
     },
 
-    [emailTemplatesEnum.USER_IS_BLOCK]: {
-        templateName: 'user-block',
-        subject: 'Sorry, but your acc was blocked'
-    },
-
-    [emailTemplatesEnum.PASSWORD_CHANGED]: {
-        templateName: 'chng-pass',
-        subject: 'Your password was successful changed'
+    [emailTemplatesEnum.USER_IS_DEL]: {
+        templateName: 'user-del',
+        subject: 'Yours acc successful deleted'
     }
 };

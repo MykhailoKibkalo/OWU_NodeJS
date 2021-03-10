@@ -1,26 +1,12 @@
 module.exports = {
-    HERE_NOTHING: {
-        en: 'Here nothing..',
-        ua: 'Тут нічого немає'
-    },
-    WRONG_NAME: {
-        en: 'Your name is wrong,please try again.',
-        ua: 'Не правильне імя, спробуй щераз'
-    },
-    WRONG_ID: {
-        en: 'This id is wrong<pls try again.',
-        ua: 'Це неправильне айді, попробуй ще раз'
-    },
-    EMAIL_IS_WRONG: {
-        en: 'This mail wrong, try again',
-        ua: 'Цей мейл невірний, попробуй ще раз.'
-    },
-    NOT_VALID_MODEL: {
-        en: 'This not valid model',
-        ua: 'Чоловіче ти щось переплутав'
-    },
-    NOT_VALID_PRICE: {
-        en: 'Wrong price',
-        ua: 'А ти не перебільшуєш?'
-    }
+    EMAIL_IS_WRONG: 'This email wrong',
+    NO_USER: 'Cant find this user,',
+    NO_TOKEN: 'No token',
+    NO_VALID_TOKEN: 'this token is not valid',
+    NO_USER_TOKEN: 'no find user with this token',
+    DEL_USER: 'User deleted',
+    CRT_USER: 'User is created',
+    NO_ATH: 'UnAuthorized',
+    CRT_CAR: 'Car is created',
+    DEL_CAR: 'Car is deleted'
 };

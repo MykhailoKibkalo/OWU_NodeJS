@@ -1,4 +1,4 @@
-const { emailTemplatesEnum } = require('../constant');
+const { emailTemplatesEnum, errorMessageEnum } = require('../constant');
 const { userService, emailService } = require('../service');
 const { passwordHasher } = require('../helpers');
 
@@ -33,7 +33,7 @@ module.exports = {
 
             await emailService.sendEmail(email, emailTemplatesEnum.HELLO, { userName: name });
 
-            res.status(201).json('user is created');
+            res.status(201).json(errorMessageEnum.CRT_USER);
         } catch (e) {
             res.status(418).json(e.message);
         }
@@ -43,12 +43,17 @@ module.exports = {
         try {
             const { userID } = req.params;
 
+            const user = await userService.getSingleUser(userID);
+
             if (userID !== req.user._id.toString()) {
-                throw new Error('UnAuthorized');
+                throw new Error(errorMessageEnum.NO_ATH);
             }
 
             await userService.delUser(userID);
-            res.json('User deleted');
+
+            await emailService.sendEmail(user.email, emailTemplatesEnum.USER_IS_DEL, { userName: user.name });
+
+            res.json(errorMessageEnum.DEL_USER);
         } catch (e) {
             res.status(418).json(e.message);
         }

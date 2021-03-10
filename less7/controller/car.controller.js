@@ -1,3 +1,4 @@
+const { errorMessageEnum } = require('../constant');
 const { carService } = require('../service');
 
 module.exports = {
@@ -24,7 +25,7 @@ module.exports = {
     createCar: async (req, res) => {
         try {
             await carService.createCar(req.body);
-            res.status(201).json('car is created');
+            res.status(201).json(errorMessageEnum.CRT_CAR);
         } catch (e) {
             res.status(418).json(e.message);
         }
@@ -34,7 +35,7 @@ module.exports = {
         try {
             const { carID } = req.params;
             await carService.delCar(carID);
-            res.json('Car deleted');
+            res.json(errorMessageEnum.DEL_CAR);
         } catch (e) {
             res.status(418).json(e.message);
         }

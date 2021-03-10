@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 
-dotenv.config({ path: path.join(process.cwd(), '../.env') });
+dotenv.config({ path: path.join(process.cwd(), './.env') });
 const apiRouter = require('./router/api.router');
 const { MONGO_URL, PORT } = require('./configs/config');
 
